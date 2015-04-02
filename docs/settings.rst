@@ -10,7 +10,7 @@ Settings
 
 There are some settings in order to customize the |filebrowser|. Nonetheless, you should be able to start with the default settings.
 
-All settings can be defined in your projects settings-file. In that case, you have to use the prefix ``FILEBROWSER_`` for every setting (e.g. ``FILEBROWSER_EXTENSIONS`` instead of ``EXTENSIONS``). 
+All settings can be defined in your projects settings-file. In that case, you have to use the prefix ``FILEBROWSER_`` for every setting (e.g. ``FILEBROWSER_EXTENSIONS`` instead of ``EXTENSIONS``).
 
 .. _settingsurlspaths:
 
@@ -228,11 +228,38 @@ NORMALIZE_FILENAME
     NORMALIZE_FILENAME = getattr(settings, "FILEBROWSER_NORMALIZE_FILENAME", False)
 
 CONVERT_FILENAME
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^
 
 ``True`` if you want to convert the filename on upload (replace spaces and convert to lowercase)::
 
     CONVERT_FILENAME = getattr(settings, "FILEBROWSER_CONVERT_FILENAME", True)
+
+Enabling this settings will enable both CONVERT_FILENAME_LOWER and CONVERT_FILENAME_STRIP.
+So, if you want both, you can set this to ``True``. If you only want one, you have to set
+this setting to ``False`` and only set the one you need.
+
+CONVERT_FILENAME_LOWER
+^^^^^^^^^^^^^^^^^^^^^^
+
+``True`` if you want to lower the filename on upload::
+
+    CONVERT_FILENAME_LOWER = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_LOWER", getattr(settings, "FILEBROWSER_CONVERT_FILENAME"))
+
+CONVERT_FILENAME_STRIP
+^^^^^^^^^^^^^^^^^^^^^^
+
+``True`` if you want to replace all whitespaces from filename on upload with some other string (see ``CONVERT_FILENAME_STRIP_REPLACEMENT``)::
+
+    CONVERT_FILENAME_STRIP = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", getattr(settings, "FILEBROWSER_CONVERT_FILENAME"))
+
+CONVERT_FILENAME_STRIP_REPLACEMENT
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When stripping whitespaces from a filename on upload, you can use a string to replace the whitespaces with (underscore is default)::
+
+    CONVERT_FILENAME_STRIP_REPLACEMENT = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", "_")
+
+This setting is only relevant if either one of ``CONVERT_FILENAME`` or ``CONVERT_FILENAME_STRIP`` is set to ``True``.
 
 LIST_PER_PAGE
 ^^^^^^^^^^^^^

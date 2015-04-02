@@ -10,7 +10,9 @@ import math
 from django.utils import six
 
 # FILEBROWSER IMPORTS
-from filebrowser.settings import STRICT_PIL, NORMALIZE_FILENAME, CONVERT_FILENAME
+from filebrowser.settings import STRICT_PIL, NORMALIZE_FILENAME, \
+                                 CONVERT_FILENAME_LOWER, CONVERT_FILENAME_STRIP, \
+                                 CONVERT_FILENAME_STRIP_REPLACEMENT
 
 # PIL import
 if STRICT_PIL:
@@ -40,8 +42,11 @@ def convert_filename(value):
         else:
             value = normalized[0]
 
-    if CONVERT_FILENAME:
-        value = value.replace(" ", "_").lower()
+    if CONVERT_FILENAME_LOWER:
+        value = value.lower()
+
+    if CONVERT_FILENAME_STRIP:
+        value = re.sub(r'\s+', CONVERT_FILENAME_STRIP_REPLACEMENT, value)
 
     return value
 

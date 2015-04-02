@@ -84,8 +84,14 @@ MAX_UPLOAD_SIZE = getattr(settings, "FILEBROWSER_MAX_UPLOAD_SIZE", 10485760)
 # Normalize filename and remove all non-alphanumeric characters
 # except for underscores, spaces & dashes.
 NORMALIZE_FILENAME = getattr(settings, "FILEBROWSER_NORMALIZE_FILENAME", False)
-# Convert Filename (replace spaces and convert to lowercase)
+# Convert Filename (replace whitespaces and convert to lowercase)
 CONVERT_FILENAME = getattr(settings, "FILEBROWSER_CONVERT_FILENAME", True)
+# Convert Filename (convert to lowercase only!)
+CONVERT_FILENAME_LOWER = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_LOWER", getattr(settings, "FILEBROWSER_CONVERT_FILENAME"))
+# Convert Filename (replace whitespaces only!)
+CONVERT_FILENAME_STRIP = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", getattr(settings, "FILEBROWSER_CONVERT_FILENAME"))
+# Convert Filename strip replacement (default is underscore!)
+CONVERT_FILENAME_STRIP_REPLACEMENT = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", "_")
 # Max. Entries per Page
 # Loading a Sever-Directory with lots of files might take a while
 # Use this setting to limit the items shown
