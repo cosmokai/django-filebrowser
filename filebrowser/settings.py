@@ -91,7 +91,7 @@ CONVERT_FILENAME_LOWER = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_LOWER",
 # Convert Filename (replace whitespaces only!)
 CONVERT_FILENAME_STRIP = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", getattr(settings, "FILEBROWSER_CONVERT_FILENAME"))
 # Convert Filename strip replacement (default is underscore!)
-CONVERT_FILENAME_STRIP_REPLACEMENT = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP", "_")
+CONVERT_FILENAME_STRIP_REPLACEMENT = getattr(settings, "FILEBROWSER_CONVERT_FILENAME_STRIP_REPLACEMENT", "_")
 # Max. Entries per Page
 # Loading a Sever-Directory with lots of files might take a while
 # Use this setting to limit the items shown
